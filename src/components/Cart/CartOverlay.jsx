@@ -1,11 +1,12 @@
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/CartContext';
+import { useCartContext } from '../../contexts/CartContext';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CartProducts from './CartProducts';
+import TotalPriceCell from './TotalPriceCell';
+import { Link } from 'react-router-dom';
 
 const CartOverlay = () => {
-    const { toggleIsCartOpen, isCartOpen } = useContext(CartContext);
+    const { toggleIsCartOpen, isCartOpen } = useCartContext();
 
     return (
         <div
@@ -29,6 +30,13 @@ const CartOverlay = () => {
                     </button>
                 </div>
                 <CartProducts />
+                <TotalPriceCell />
+                <Link
+                    to='/checkout'
+                    className='bg-slate-100 text-slate-950 rounded-sm p-1 hover:bg-slate-300 text-center'
+                >
+                    Finalizar Compra
+                </Link>
             </section>
         </div>
     );
